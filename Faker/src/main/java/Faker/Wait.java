@@ -36,8 +36,22 @@ public class Wait {
 		 
 		 //Explicitly wait
 		// WebDriverWait wait = new WebDriverWait(driver, 90);
-	   //  WebElement elementToClick = wait.until(ExpectedConditions.elementToBeClickable(By.id("elementId")));
+	    WebElement elementToClick = driver.findElement(By.xpath("//span[text()='Click First Button']"));
+	    elementToClick.click();
+	    
+	    WebElement Verify =  driver.findElement(By.xpath("//div[@role='alert']"));
+	    Verify.click();
 
+	    
+	     if(Verify.isDisplayed()) 
+	     {
+	    	 System.out.println("Appeared");
+	     }else 
+	     {
+	    	 System.out.println("Not- Appeared");
+
+	     }
+          	
 	}
 
 }
