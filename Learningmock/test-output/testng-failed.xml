@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT" verbose="2">
+  <test thread-count="5" name="Test1(failed)" verbose="2">
+    <parameter name="UName" value="hari.radhakrishnan@qeagle.com"/>
+    <parameter name="PWD" value="Leaf$1234"/>
+    <parameter name="URL" value="https://login.salesforce.com/"/>
+    <classes>
+      <class name="SalesforceTC002">
+        <methods>
+          <include name="Url"/>
+          <include name="Salesforce" invocation-numbers="0"/>
+          <include name="closedriver"/>
+        </methods>
+      </class> <!-- SalesforceTC002 -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+</suite> <!-- Failed suite [Suite] -->
