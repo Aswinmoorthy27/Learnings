@@ -63,5 +63,24 @@ public class Table {
 			Assert.isTrue(false, tx, "Argentina");
 			System.out.println("Not Argentina");
 		}
+		
+		// column  status
+		
+				 WebElement StatusText=driver.findElement(By.xpath("(//span[text()='NEW'])[1]"));
+				 StatusText.click();
+				String Status= StatusText.getText();		
+				if(Status.equals("NEW")) 
+				{
+					Assert.isTrue(true, Status, "NEW");
+					System.out.println("NEW");
+					
+				}else 
+				{
+					Assert.isTrue(false, Status, "NEW");
+					System.out.println("Not NEW");
+				}
+			
+				//pagination
+				driver.findElement(By.linkText("2")).click();
 	}
 }
