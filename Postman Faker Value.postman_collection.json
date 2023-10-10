@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "719e00d5-852c-4fae-bdf0-6bc1bf1123cb",
+		"name": "Postman Faker Value",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13917678",
+		"_collection_link": "https://lively-astronaut-516091.postman.co/workspace/API-LEARING-OCT~c2fce583-3150-4942-a755-3073ad9fd1d2/collection/13917678-719e00d5-852c-4fae-bdf0-6bc1bf1123cb?action=share&source=collection_link&creator=13917678"
+	},
+	"item": [
+		{
+			"name": "Create incident with faker value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"admin\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var res=pm.response.json();\r",
+							"console.log(res);\r",
+							"\r",
+							"var sys_id=res.result.sys_id;\r",
+							"console.log(sys_id);\r",
+							"\r",
+							"pm.globals.set(\"sys_id\",sys_id);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"{{$randomFirstName}}\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev108307.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev108307",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get incident with faker value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev108307.service-now.com/api/now/table/incident/{{sys_id}}",
+					"protocol": "https",
+					"host": [
+						"dev108307",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sys_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update incident with faker value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"{{$randomLastName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev108307.service-now.com/api/now/table/incident/{{sys_id}}",
+					"protocol": "https",
+					"host": [
+						"dev108307",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sys_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete incident with faker value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"var jsonObject = xml2Json(responseBody);\r",
+							"console.log(jsonObject);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dev108307.service-now.com/api/now/table/incident/{{sys_id}}?urgency=1",
+					"protocol": "https",
+					"host": [
+						"dev108307",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"{{sys_id}}"
+					],
+					"query": [
+						{
+							"key": "urgency",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "uloGCE6o^M4+",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
