@@ -1,0 +1,89 @@
+
+https://github.com/TestLeafPages/Hybrid_Framework
+Click on Code -->Download zip
+
+Downloads -->extract file 
+
+Eclipse 
+File-->import-->Maven-->Existing Maven Project-->Browse the path-->Select project folder(Extracted folder)
+  ->pom.xml(manadatary) -->click finish
+
+Hybrid Framework
+----------------
+
+ Purpose of Framework
+   Code reusability
+   Easy maintenance
+   Structured/Organised
+   Readability
+   Uniform Output
+   Better Productivity
+   
+   Integrate with 
+    POM -->design pattern
+	DataDriven -->Apache POI -->mutiple test data
+	ExtentReport ->Interactive Reporter
+	TestNg -->Execution framework
+	BDD -->Cucumber
+
+
+Hybrid Framework
+----------------
+ It is basically designed on POM(Page Object Model) and supports TestNg and BDD Framework
+ -We used Selenium WebDriver to interact with the Webelements of WebApplication
+ -We have TestNg frame work to have the controlled Execution
+ -We used cucumber to support BDD automation
+ -We have Apache POI to read data from excel file
+ -We have Extent Report configuration to generate html summary report
+ -We have Owner API to handle the properties file to support multiple datatypes (ConfigurationManager)
+ 
+ Framework components
+ --------------------
+ 
+com.framework.selenium.api.design
+   2 interfaces -->design for 
+   Element(I)  -->design for all the actions done on webelement and its verification
+   Browser (I) -->design for maintaining the driver instance and verifications
+   
+com.framework.selenium.api.base
+    Seleniumbase -->implementation class for the interfaces (Browser and Element)
+	             -->library/heart of the framework/wrapper class
+	Driver instance -->threadlocal configuration 
+	     ->Encapsulation concept getter and setter methods to enable smooth parallel execution
+com.framework.pages
+     page object-->webElements and its actions
+	            -->Each navigation is created a page class holds the methods for webelements and its action
+com.framework.testcases
+      -->holds java classes related to each testcase (for execution)
+      actual test -->@Test
+com.framework.utils
+      Datalibrary -->readexcel code to read the data from the excel file
+	  Reporter -->to generate  report (Extent report code)
+com.framework.testng.api.base
+	 ProjectSpecificMethod-->java class holding common funtionalities
+	 Retry engiene-->Retry analyzer code 
+
+Hirerachy of classes in the framework
+-------------------------------------
+AbstractTestNgCucumber
+	DriverInstance
+		Reporter
+			SeleniumBase
+				projectSpecificmethod
+						pages and testcases
+
+Execution of any testcases -follows the testNg annotations
+----------------------------------------------------------
+@BeforeSuite  ->to startReport()->(Reporter class)
+ @BeforeTest  ->to setValues()--> (testcase)
+  @BeforeClass -->to starttestCase-->(Reporter -->to log the testcase details in the reporter)
+   @DataProvider -->to read data from the excel sheet (w.r.t testcase)
+    @BeforeMethod-->preCondition() (ProjectSpecficMethod)
+	  @Test       -->actual testcase
+	 @AfterMethod -->postCondition()(ProjectSpecficMethod)
+	@Aftercclass -->nil
+ @AfterTest-->nil
+@AfterSuite--> to endResult() (Reporter)
+ 
+						
+
